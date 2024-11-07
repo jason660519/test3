@@ -19,6 +19,7 @@ jobs:
           echo "This is a push event on all the branches"
 
   job_2_schedule_job:
+    if: false # 讓這個 job 先不要被執行
     runs-on: ubuntu-latest
     steps:
       - name: Info
