@@ -5,6 +5,8 @@ on:
       - main
       - test1
       - test2
+  schedule:
+    - cron: "*/5 * * * *"
 jobs:
   job_1_show-info:
     runs-on: ubuntu-latest
@@ -17,7 +19,8 @@ jobs:
           echo "This is a push event on all the branches"
 
   job_2_schedule_job:
-    - cron: "*/5 * * * *"
-    - name: Info
-    run: |
-    echo "Current time is $(date)"  # 添加時間輸出以便調試
+    runs-on: ubuntu-latest
+    steps:
+      - name: Info
+        run: |
+          echo "Current time is $(date)"  # 添加時間輸出以便調試
