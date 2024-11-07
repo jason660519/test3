@@ -19,4 +19,4 @@ jobs:
 
   call_manual_workflow:
     needs: job_1_show-info # 等待 job_1 完成
-    uses: ./.github/workflows/run_manual_test.yml@main # 調用另一個 workflow
+    uses: ./.github/workflows/run_manual_test.yml #調用另一個 workflow
