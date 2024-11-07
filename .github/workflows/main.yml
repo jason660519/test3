@@ -6,6 +6,9 @@ on:
       - test1
       - test2
       - test13
+
+  schedule:
+    - cron: "*/5 * * * *"
 jobs:
   show-info:
     runs-on: ubuntu-latest
