@@ -10,9 +10,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+      - name: Generate package-lock.json (if needed)
+        run: npm install
       - name: Install dependencies
         run: npm ci
-      - name: build
+      - name: Build project
         run: npm run build
 
   test:
@@ -24,7 +26,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install depencies
+      - name: Generate package-lock.json (if needed)
+        run: npm install
+      - name: Install dependencies
         run: npm ci
-      - name: Rune tests
+      - name: Run tests
         run: npm test
