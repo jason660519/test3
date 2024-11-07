@@ -7,6 +7,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-      - name: Info
+      - name: Info2
         run: |
           echo "Running manual tasks "
