@@ -1,6 +1,9 @@
 name: Manual Workflow
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - "*"
 
 jobs:
   run-manual-tasks:
@@ -11,4 +14,14 @@ jobs:
       - name: Info
         run: |
           echo "Current time is $(date)"
-          echo "This is main workflow running(Manual Workflow)"
+          echo "This is main workflow running (Manual Workflow)"
+
+  run-on-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Info
+        run: |
+          echo "Current time is $(date)"
+          echo "This is a push workflow"
