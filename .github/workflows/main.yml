@@ -5,7 +5,7 @@ on:
       - main
       - test1
       - test2
-      - test11
+      - test12
 jobs:
   show-info:
     runs-on: ubuntu-latest
