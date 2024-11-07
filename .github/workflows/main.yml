@@ -1,9 +1,9 @@
 name: Push Events and 5 mins schedule
 on:
-  workflow_dispatch: # 添加手動觸發選項
+  workflow_dispatch:
   push:
     branches:
-      - "*" # 監聽所有分支的推送
+      - "*"
   schedule:
     - cron: "*/5 * * * *"
 
@@ -13,21 +13,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Info
         run: |
           echo "Current time is $(date)"
-          echo "Branch name is ${GITHUB_REF#refs/heads/}"
-          echo "GitHub event name: ${{ github.event_name }}"
-          echo "GitHub repository: ${{ github.repository }}"
-          echo "GitHub workspace: ${{ github.workspace }}"
-          echo "GitHub SHA: ${{ github.sha }}"
 
-  job_2_schedule_job:
-    if: false # 暫時停用這個 job
-    runs-on: ubuntu-latest
-    steps:
-      - name: Info
-        run: |
-          echo "Current time is $(date)"
-          echo "This is a scheduled job"
+  call_manual_workflow:
+    needs: job_1_show-info # 等待 job_1 完成
+    uses: ./.github/workflows/run_manual_test.yml@main # 調用另一個 workflow

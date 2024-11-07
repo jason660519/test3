@@ -1,12 +1,18 @@
 name: Manual Workflow
 on:
   workflow_dispatch:
+  workflow_call:
+
 jobs:
   run-manual-tasks:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+
       - name: Info2
         run: |
-          echo "Running manual tasks "
+          echo "Running manual tasks"
+          echo "Workflow name: ${{ github.workflow }}"
+          echo "Event name: ${{ github.event_name }}"
+          echo "Trigger time: $(date)"
