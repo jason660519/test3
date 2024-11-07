@@ -1,4 +1,4 @@
-name: Push Events
+name: Push Events and 5 mins schedule 
 on:
   push:
     branches:
@@ -6,11 +6,10 @@ on:
       - test1
       - test2
       - test13
-  schedule:
-    - cron: "*/5 * * * *" # 確保這個文件在 main 分支上
+
 
 jobs:
-  show-info:
+  job_1_show-info:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -19,3 +18,9 @@ jobs:
         run: |
           echo "Current time is $(date)"  # 添加時間輸出以便調試
           echo "This is a push event on all the branches"
+
+job_2_schedule_job:
+  - cron: "*/5 * * * *" 
+  - name: Info
+  run: |
+    echo "Current time is $(date)"  # 添加時間輸出以便調試

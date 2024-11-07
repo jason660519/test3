@@ -1,0 +1,12 @@
+name:Manual Workflow
+on:
+  workflow_dispatch:
+jobs:
+  run-manual-tasks:
+    run-on: ubuntu-latest
+    setp:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+    - name: Info
+      run: |
+        echo "Running manual tasks "
