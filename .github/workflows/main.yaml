@@ -6,6 +6,10 @@ on:
         description: "Description for param1"
         required: true
         default: "Hello world param1"
+      param2:
+        description: "Description for param2"
+        required: false
+        default: "Hello world param2"
 jobs:
   run-manual-tasks:
     runs-on: ubuntu-latest
