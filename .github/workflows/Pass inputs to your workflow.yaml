@@ -1,0 +1,20 @@
+name: Manual Workflow
+on:
+  workflow_dispatch:
+    inputs:
+      param1:
+        description: "Description for param1"
+        required: true
+        default: "Hello world param1"
+      param2:
+        description: "Description for param2"
+        required: false
+        default: "Hello world param2"
+jobs:
+  run-manual-tasks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Info
+        run: |
+          echo "This is main workflow running (Manual Workflow)"
+          echo "Running manual task with param1: ${{ github.event.inputs.param1 }}"
