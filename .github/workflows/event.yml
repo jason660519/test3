@@ -1,12 +1,12 @@
-# name: Push Events
-# on:
-#   issues:
-#     types:
-#       - opened
-# jobs:
-#   show-info:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Info
-#         run: |
-#           echo "This is a push event on all the branches"
+name: Push Events
+on:
+  issues:
+    types:
+      - opened
+jobs:
+  show-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Info
+        run: |
+          echo "This is a push event on all the branches"
