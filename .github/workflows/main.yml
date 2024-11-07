@@ -1,13 +1,10 @@
-name: Push Events and 5 mins schedule 
+name: Push Events and 5 mins schedule
 on:
   push:
     branches:
       - main
       - test1
       - test2
-      - test13
-
-
 jobs:
   job_1_show-info:
     runs-on: ubuntu-latest
@@ -19,8 +16,8 @@ jobs:
           echo "Current time is $(date)"  # 添加時間輸出以便調試
           echo "This is a push event on all the branches"
 
-job_2_schedule_job:
-  - cron: "*/5 * * * *" 
-  - name: Info
-  run: |
+  job_2_schedule_job:
+    - cron: "*/5 * * * *"
+    - name: Info
+    run: |
     echo "Current time is $(date)"  # 添加時間輸出以便調試
