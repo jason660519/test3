@@ -1,5 +1,11 @@
 name: Push Events
 on:
+  push:
+    branches: main
+      test1
+      test2
+      test3
+
   schedule:
     - cron: "*/5 * * * *"
 
