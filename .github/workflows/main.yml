@@ -1,32 +1,14 @@
-name: Push Events and 5 mins schedule
+name: Manual Workflow
 on:
   workflow_dispatch:
-    inputs:
-      workflow_choice:
-        description: "選擇要執行的 workflow"
-        required: true
-        default: "main"
-        type: choice
-        options:
-          - main
-          - manual_test
-  push:
-    branches:
-      - "*"
-  schedule:
-    - cron: "*/5 * * * *"
 
 jobs:
-  job_1_show-info:
-    if: github.event.inputs.workflow_choice == 'main' || github.event.name != 'workflow_dispatch'
+  run-manual-tasks:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Info
         run: |
           echo "Current time is $(date)"
-
-  call_manual_workflow:
-    if: github.event.inputs.workflow_choice == 'manual_test'
-    uses: ./.github/workflows/run_manual_test.yml
+          echo "This is main workflow running(Manual Workflow)"
