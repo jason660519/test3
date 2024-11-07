@@ -1,6 +1,5 @@
-name: Manual Workflow
+name: Manual Test Workflow
 on:
-  workflow_dispatch:
   workflow_call:
 
 jobs:
@@ -9,10 +8,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-      - name: Info2
+      - name: Info
         run: |
-          echo "Running manual tasks"
-          echo "Workflow name: ${{ github.workflow }}"
-          echo "Event name: ${{ github.event_name }}"
-          echo "Trigger time: $(date)"
+          echo "Running manual test tasks"
+          echo "Current time is $(date)"
