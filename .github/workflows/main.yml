@@ -1,0 +1,17 @@
+name: Push Events
+on:
+  push:
+    branches:
+      - main
+      - test1
+      - test2
+      - test12
+jobs:
+  show-info:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Info
+        run: |
+          echo "This is a push event on all the branches"
