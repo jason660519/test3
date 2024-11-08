@@ -4,6 +4,8 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Generate data
         run: echo "Some Data generated in job 1!" > data.txt
       - name: Upload data as artifactor
@@ -20,5 +22,5 @@ jobs:
         with:
           name: job1-data1
           path: data/
-      - name: Use dtat in job2
+      - name: Use data in job2
         run: cat data/data.txt
