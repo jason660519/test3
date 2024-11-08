@@ -3,16 +3,21 @@ on: [push]
 jobs:
   job1:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Generate data
         run: echo "Some Data generated in job 1!" > data.txt
+      - name: Check file
+        run: ls -la data.txt
       - name: Upload data as artifactor
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: job1-data1
-          path: data.txt
+          path: ${{ github.workspace }}/data.txt
   job2:
     needs: job1
     runs-on: ubuntu-latest
