@@ -9,7 +9,7 @@ jobs:
       - name: Upload data as artifactor
         uses: actions/upload-artifact@v4
         with:
-          name: data1
+          name: job1-data1
           path: data.txt
   job2:
     needs: job1
@@ -18,7 +18,7 @@ jobs:
       - name: Use data from job 1
         uses: actions/download-artifact@v3
         with:
-          name: data-artifact
+          name: job1-data1
           path: data/
       - name: Use dtat in job2
         run: cat data/data.txt
