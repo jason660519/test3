@@ -7,7 +7,7 @@ jobs:
       - name: Generate data
         run: echo "Some Data generated in job 1!" > data.txt
       - name: Upload data as artifactor
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: data1
           path: data.txt
@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Use data from job 1
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
           name: data-artifact
           path: data/
