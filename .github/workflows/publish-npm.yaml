@@ -48,9 +48,13 @@ jobs:
       packages: write
     needs: [build_and_package] # 需要等待 build_and_package 任務完成
     steps:
+      # 新增：檢出程式碼
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       # 步驟1：下載先前儲存的包檔案
       - name: Download Package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
           name: package
 
@@ -66,7 +70,6 @@ jobs:
       - run: |
           echo "@jason660519:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
-
       # 步驟4：發布套件
       - run: npm publish
         env:
