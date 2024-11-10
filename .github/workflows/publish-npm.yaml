@@ -70,6 +70,8 @@ jobs:
       - run: |
           echo "@jason660519:registry=https://npm.pkg.github.com" > .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+          echo "registry=https://npm.pkg.github.com" >> .npmrc
+
       # 步驟4：發布套件
       - run: npm publish
         env:
