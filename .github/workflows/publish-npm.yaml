@@ -59,13 +59,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          registry-url: https://npm.pkg.github.com # 設置 GitHub Packages 註冊表
+          registry-url: "https://npm.pkg.github.com"
           scope: "@jason660519"
 
-      # 步驟3：配置 npm 註冊表
-      - run: echo "registry=https://npm.pkg.github.com@jason660519" >> .npmrc
+      # 步驟3：修正 .npmrc 設置
+      - run: |
+          echo "@jason660519:registry=https://npm.pkg.github.com" > .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
-      # 步驟4：發布套件到 GitHub Packages
-      - run: npm publish $(ls *.tgz)
+      # 步驟4：發布套件
+      - run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }} # 使用 GitHub Token 進行認證
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
