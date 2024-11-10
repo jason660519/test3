@@ -54,7 +54,7 @@ jobs:
 
       # 步驟1：下載先前儲存的包檔案
       - name: Download Package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: package
 
