@@ -35,7 +35,7 @@ jobs:
 
       # 步驟6：儲存打包後的檔案作為工作流程產物
       - name: Package the App
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: package
           path: "*.tgz"
@@ -54,7 +54,7 @@ jobs:
 
       # 步驟1：下載先前儲存的包檔案
       - name: Download Package
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: package
 
